@@ -1,18 +1,33 @@
-# docker-compose.yml
-version: '3'
-services:
-  db:
-    image: postgres:latest
-    restart: always
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: "unicorn_user"
-      POSTGRES_PASSWORD: "magical_password"
-      POSTGRES_DB: "portfolioApp_development"
-    volumes:
-      - database_data:/var/lib/postgresql/data
+version: "3"
 
-volumes:
-  database_data:
-    driver: local
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    restart: always
+    volumes:
+      - .:/src
+    command: >
+      sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    # environment:
+    #   - DB_HOST=db
+    #   - DB_NAME=portfolioApp_development
+    #   - DB_USER=postgres
+    #   - DB_PASS=supersecretpassword
+    #   - DB_PORT=5432
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=portfolioApp_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=supersecretpassword
+    # volumes:
+    #     - ./pgdatabase:/var/lib/postgresql/data/
+
