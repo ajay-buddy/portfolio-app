@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @portfolio_items.title %>
+</p>
+
+<p>
+  <strong>Subtitle:</strong>
+  <%= @portfolio_items.subtitle %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @portfolio_items.body %>
+</p>
+
+<%= link_to 'Edit', edit_portfolio_path(@portfolio_items) %>
+<%= link_to 'Delete', @portfolio_items, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', portfolios_path %>

@@ -18,16 +18,20 @@ services:
     #   - DB_PASS=supersecretpassword
     #   - DB_PORT=5432
     depends_on:
-      - db
+      - database
 
-  db:
+  database:
     image: postgres
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=portfolioApp_dev
+      - POSTGRES_DB=portfolioApp_develop
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=supersecretpassword
-    # volumes:
-    #     - ./pgdatabase:/var/lib/postgresql/data/
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+volumes:
+  mypostgresdb:
+    external: true
 
