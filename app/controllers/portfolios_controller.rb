@@ -12,7 +12,6 @@ class PortfoliosController < ApplicationController
     def new
         @portfolio_items = Portfolio.new
         3.times do
-          puts "Hello"
           @portfolio_items.technologies.build
         end
         # 3.times { @portfolio_items.technologies.build }
