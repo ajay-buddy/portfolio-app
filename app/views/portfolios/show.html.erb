@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= image_tag @portfolio_items.main_image unless @portfolio_items.main_image.nil?%>
 <p>
   <strong>Title:</strong>
   <%= @portfolio_items.title %>
