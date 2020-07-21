@@ -70,7 +70,7 @@ class BlogsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog is moved to #{@blog.status}.' }
+      format.html { redirect_to blogs_url, notice: "Blog is moved to #{@blog.status}." }
       format.json { head :no_content }
     end
   end
