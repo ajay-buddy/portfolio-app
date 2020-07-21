@@ -1,5 +1,12 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
+<% if current_model %>
+    <%= link_to "Logout", destroy_model_session_path, method: :delete %>
+<% else %>
+    <%= link_to "Register", new_model_registration_path, method: :get %>
+    <%= link_to "Login", model_session_path, method: :post %>
+<% end %>
+
 <%= link_to 'Blogs', blogs_path %>
 <%= link_to 'Portfolios', portfolios_path %>
