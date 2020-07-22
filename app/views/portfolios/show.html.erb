@@ -15,6 +15,14 @@
   <%= @portfolio_items.body %>
 </p>
 
+
+<% if @portfolio_items.technologies.count > 0 %>
+  <h2>Technologies Used</h2>
+<% end %>
+<% @portfolio_items.technologies.each do |tech| %>
+<p><%= tech.name %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_portfolio_path(@portfolio_items) %>
 <%= link_to 'Delete', @portfolio_items, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', portfolios_path %>
