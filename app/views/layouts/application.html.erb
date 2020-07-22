@@ -16,6 +16,18 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
+    <% if current_user %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <% else %>
+        <%= link_to "Register", new_user_registration_path, method: :get %>
+        <%= link_to "Login", user_session_path, method: :post %>
+    <% end %>
+    <br>
+    <hr>
+    <br>
     <%= yield %>
+    <%if session[:source]%>
+      Thanks for visiting me from <%= session[:source] %>
+    <% end %>
   </body>
 </html>
