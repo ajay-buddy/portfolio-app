@@ -1,33 +1,5 @@
 <p id="notice"><%= notice %></p>
 
 <h1>New Portfolio</h1>
+<%= render "forms", portfolio_items: @portfolio_items%>
 
-<%= form_for(@portfolio_items) do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :subtitle %>
-    <%= form.text_area :subtitle %>
-  </div>
-  
-  <ul>
-    <%= form.fields_for :technologies do |t| %>
-      <li>
-        <%= t.label :name %>
-        <%= t.text_field :name %>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
